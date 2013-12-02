@@ -1,20 +1,14 @@
 require 'spec_helper'
 
 describe "Static Pages" do
-  describe "Home Page" do
-    it "should have the content 'VlogPals'" do
-      visit '/static_pages/home'
-      expect(page).to have_content('VlogPals')
-    end
 
-    it "should have the base title" do
-    	visit '/static_pages/home'
-    	expect(page).to have_title('VLOG PALS')
-    end
+	subject { page }
 
-    it "should not have the specific 'Home' title" do
-    	visit '/static_pages/home'
-    	expect(page).not_to have_title('Home')
-    end
-  end
+	describe "Home Page" do
+		before { visit root_path }
+
+	    it { should have_content('VLOG PALS') }
+		it { should have_title('VLOG PALS') } 
+	    it { should_not have_title('Home') }
+	end
 end
