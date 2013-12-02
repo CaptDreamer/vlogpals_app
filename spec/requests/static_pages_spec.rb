@@ -7,9 +7,14 @@ describe "Static Pages" do
       expect(page).to have_content('VlogPals')
     end
 
-    it "should have the correct title" do
+    it "should have the base title" do
     	visit '/static_pages/home'
-    	expect(page).to have_title('Home')
+    	expect(page).to have_title('VLOG PALS')
+    end
+
+    it "should not have the specific 'Home' title" do
+    	visit '/static_pages/home'
+    	expect(page).not_to have_title('Home')
     end
   end
 end
